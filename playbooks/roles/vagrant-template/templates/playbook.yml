@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install-tailscale
+      import_role: 
+        name: artis3n.tailscale
+      vars:
+        tailscale_authkey: "{% raw %}{{ lookup('community.general.onepassword','{% endraw %}{{ password_authkey }}', field='{{ password_field }}', vault='{{ password_vault }}') {% raw %}}}{% endraw %}"
+        tailscale_args: "--ssh"
+    

@@ -1,0 +1,7 @@
+box_memory: 1024
+box_cpu: 2
+box_path: ../vagrant/{{ box_name }}
+
+password_authkey: tailscale_vagrant_authkey
+password_field: credential
+password_vault: vagrant_vault 

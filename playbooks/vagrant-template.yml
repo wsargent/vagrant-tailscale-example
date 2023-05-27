@@ -1,0 +1,5 @@
+---
+- name: "vagrant-template playbook"
+  hosts: localhost
+  roles:
+    - vagrant-template

@@ -1,0 +1,35 @@
+- name: apt-update
+  become: yes
+  apt:
+    update_cache: yes
+- name: install-zsh
+  become: yes
+  apt:
+    name: zsh
+    state: present
+- name: set-zsh-for-vagrant-user
+  become: yes
+  user:
+    name: vagrant
+    shell: /bin/zsh
+- name: checkout-antigen
+  become: yes
+  become_user: vagrant
+  git:
+    repo: 'https://github.com/zsh-users/antigen.git'
+    dest: ~/.antigen
+    update: no
+- name: create-antigenrc
+  become: yes
+  become_user: vagrant
+  copy:
+    src: antigenrc
+    dest: ~/.antigenrc
+    force: no
+- name: create-zshrc
+  become: yes
+  become_user: vagrant
+  copy: 
+    src: zshrc
+    dest: ~/.zshrc
+    force: no

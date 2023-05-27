@@ -1,0 +1,8 @@
+- name: Create a vagrant/{{ box_name }} directory
+  local_action: ansible.builtin.file path={{ box_path }} state=directory
+- name: Copy requirements.yml
+  local_action: ansible.builtin.copy src=requirements.yml dest={{ box_path }}
+- name: Copy playbook.yml
+  local_action: ansible.builtin.template src=playbook.yml dest={{ box_path }}
+- name: Template Vagrantfile
+  local_action: ansible.builtin.template src=Vagrantfile dest={{ box_path }}

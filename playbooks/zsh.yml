@@ -1,0 +1,5 @@
+---
+- name: "zsh playbook"
+  hosts: all
+  roles:
+    - zsh
